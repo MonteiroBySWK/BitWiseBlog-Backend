@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-items: center;
+      flex-direction: column;
+    }
+
+    form {
+      width: 40%;
+      padding: 10px 12px;
+      border: solid 1px black;
+    }
+
+    p {
+      display: flex;
+      flex-direction: column;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    input,
+    textarea {
+      padding: 8px 6px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Criar Posts</h1>
+  <form action="http://localhost:5000/posts/create" method="POST">
+    <p>
+      <label for="title">Titulo </label>
+      <input type="text" name="title" value="">
+    </p>
+    <p>
+      <label for="author">Author </label>
+      <input type="text" name="author" value="">
+    </p>
+    <p>
+      <label for="contain">Conteudo </label>
+      <textarea name="contain" rows="15"></textarea>
+    </p>
+    <button type="submit">Enviar</button>
+
+  </form>
+
+  <p class="post">
+    {% for post in all_posts%}
+    <li>{{ post }}</li>
+    {% endfor %}
+  </p>
+</body>
+
+</html>

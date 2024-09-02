@@ -1,14 +1,13 @@
-from sqlalchemy.schema import Column
-from sqlalchemy.types import String
+from ..app import db
 
 
-class UserModel:
+class UserModel(db.Model):
     __tablename__: str = "users"
 
-    id = Column()
-    username = Column(String)
-    email = Column(String)
-    password = Column(String)
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String)
+    email = db.Column(db.String)
+    password = db.Column(db.String)
 
     def __str__(self):
         return f"Account: {self.username}"
