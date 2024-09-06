@@ -1,13 +1,17 @@
+from sqlalchemy import Column, Integer, Text
 from ..app import db
 
 
 class UserModel(db.Model):
     __tablename__: str = "users"
 
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String)
-    email = db.Column(db.String)
-    password = db.Column(db.String)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    username = Column(Text, nullable=False, unique=True)
+    email = Column(Text, nullable=False, unique=True)
+    password = Column(Text, nullable=False)
+
+    def __repr__(self) -> str:
+        return f"Account(id={self.id}, username={self.username}, email={self.email})"
 
     def __str__(self):
         return f"Account: {self.username}"
